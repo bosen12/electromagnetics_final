@@ -818,274 +818,456 @@ $\cos^2$ 的時間平均值為 $1/2$：
 %  第二部分：2015 期末考
 %=============================================================================
 \newpage
-\part{2015 年期末考}
+\part{2015 年期末考（06/25/2015）}
 
 %-----------------------------------------------------------------------------
-\section{第 1 題 — 旋轉迴路中的感應電動勢}
+\section{第 1 題（15 分）— 旋轉迴路中的感應電動勢}
 %-----------------------------------------------------------------------------
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
-  \item 與 2024 第 2 題概念相同：法拉第定律 $\emf = -d\Phi/dt$
+  \item \textbf{法拉第定律}：$\emf = -d\Phi/dt$
   \item 當迴路旋轉時，法向量 $\an$ 隨時間變化
   \item 磁通 $\Phi = \vB \cdot \an \cdot S$
+  \item 積化和差：$\cos A\cos B = \tfrac{1}{2}[\cos(A-B)+\cos(A+B)]$
 \end{itemize}
 \end{conceptbox}
 
-\textbf{題目}：矩形迴路尺寸 $h \times w$，在磁場 $\vB = \ay B_0 \cos\omega t$ 中。
+\begin{formulabox}[相關公式]
+\[
+  \emf = -\frac{d\Phi}{dt}, \quad \Phi = \int_S \vB\cdot d\vS = \vB\cdot\an\cdot hw
+\]
+\end{formulabox}
+
+\textbf{題目}：$h\times w$ 矩形導體迴路在時變磁場 $\vB = \ay B_0\cos\omega t$ 中。迴路法向量初始與 $\ay$ 夾角 $\alpha$。
+(a) 迴路靜止；(b) 迴路繞 $x$ 軸以角速度 $\omega$ 旋轉。
 
 \begin{solutionbox}[詳解]
 
-\textbf{(a) 迴路靜止，法向量 $\an$ 與 $\ay$ 夾角 $\alpha$：}
+\textbf{(a) 迴路靜止（$\alpha$ 固定）：}
 
+法向量 $\an$ 與 $\ay$ 夾角 $\alpha$ 不變：
 \[
-  \Phi = \vB \cdot \an \cdot hw = B_0 hw \cos\omega t \cos\alpha
+  \Phi = B_0 hw\cos\omega t\cos\alpha
 \]
 \[
-  \boxed{\emf = -\frac{d\Phi}{dt} = B_0 hw\,\omega\sin\omega t\cos\alpha}
-\]
-
-\textbf{(b) 迴路繞軸旋轉，角度 $\alpha = 2\omega t$：}
-
-此時迴路的旋轉角速度是磁場振盪頻率的兩倍：
-\[
-  \Phi = B_0 hw \cos\omega t \cos(2\omega t)
+  \boxed{\emf = -\frac{d\Phi}{dt} = B_0 hw\,\omega\sin\omega t\cos\alpha \;\text{(V)}}
 \]
 
-利用積的微分法則：
-\begin{align*}
-  \frac{d\Phi}{dt} &= B_0 hw \left[-\omega\sin\omega t\cos(2\omega t) - 2\omega\cos\omega t\sin(2\omega t)\right]
-\end{align*}
+\textbf{概念}：磁場隨時間變化產生 transformer emf。只有 $\vB$ 的 $\ay$ 分量穿過迴路，且投影因子為 $\cos\alpha$。
 
-利用三角恆等式化簡（也可直接用積化和差）：
+\bigskip
+\textbf{(b) 迴路繞 $x$ 軸以角速度 $\omega$ 旋轉：}
+
+$t=0$ 時夾角為 $\alpha$，旋轉後 $\alpha(t) = \alpha + \omega t$：
 \[
-  \cos\omega t\cos 2\omega t = \frac{1}{2}[\cos\omega t + \cos 3\omega t]
+  \Phi = B_0 hw\cos\omega t\cos(\alpha + \omega t)
+\]
+
+用積化和差展開：
+\[
+  \cos\omega t\cos(\alpha+\omega t)
+  = \tfrac{1}{2}\bigl[\cos(-\alpha) + \cos(2\omega t + \alpha)\bigr]
+  = \tfrac{1}{2}\bigl[\cos\alpha + \cos(2\omega t + \alpha)\bigr]
 \]
 \[
-  \Phi = \frac{B_0 hw}{2}(\cos\omega t + \cos 3\omega t)
+  \Phi = \frac{B_0 hw}{2}\bigl[\cos\alpha + \cos(2\omega t + \alpha)\bigr]
 \]
 \[
-  \boxed{\emf = \frac{B_0 hw\,\omega}{2}(\sin\omega t + 3\sin 3\omega t)}
+  \boxed{\emf = -\frac{d\Phi}{dt} = B_0 hw\,\omega\sin(2\omega t + \alpha) \;\text{(V)}}
 \]
+
+\textbf{概念}：磁場以 $\omega$ 振盪，迴路也以 $\omega$ 旋轉。兩者相對角速度產生 $2\omega$ 頻率的 emf。注意若初始角 $\alpha = 0$，則 $\emf = B_0 hw\omega\sin 2\omega t$。
 \end{solutionbox}
 
 %-----------------------------------------------------------------------------
-\section{第 2 題 — 完美導體邊界條件}
+\section{第 2 題（15 分）— 完美導體邊界條件}
 %-----------------------------------------------------------------------------
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
-  \item 完美導體（PEC）內部：$\vE = 0$，$\vB = 0$
-  \item 邊界條件（$\hat{\mathbf{n}}_2$ 指向介質 1）：
+  \item 完美導體（PEC）內部：$\vE = 0$，$\vH = 0$
+  \item 邊界條件（$\hat{\mathbf{n}}_2$ 從 PEC 指向介質）：
     \begin{itemize}
-      \item $E_{1t} = 0$（切向電場為零）
-      \item $B_{1n} = 0$（法向磁通密度為零）
-      \item $\hat{\mathbf{n}}_2 \times \vH_1 = \vJ_s$（表面電流密度）
-      \item $\hat{\mathbf{n}}_2 \cdot \vD_1 = \rho_s$（表面電荷密度）
+      \item $\hat{\mathbf{n}}_2 \times \vE_1 = 0$（切向 $\vE$ 為零）
+      \item $\hat{\mathbf{n}}_2 \cdot \vB_1 = 0$（法向 $\vB$ 為零）
+      \item $\hat{\mathbf{n}}_2 \times \vH_1 = \vJ_s$（表面電流）
+      \item $\hat{\mathbf{n}}_2 \cdot \vD_1 = \rho_s$（表面電荷）
     \end{itemize}
 \end{itemize}
 \end{conceptbox}
 
 \begin{formulabox}[PEC 邊界條件]
 \[
-  \hat{\mathbf{n}}_2 \times \vE_1 = 0, \quad
-  \hat{\mathbf{n}}_2 \cdot \vB_1 = 0
-\]
-\[
-  \hat{\mathbf{n}}_2 \times \vH_1 = \vJ_s, \quad
-  \hat{\mathbf{n}}_2 \cdot \vD_1 = \rho_s
+  E_t = 0, \quad B_n = 0, \quad \hat{n}_2\times\vH_1 = \vJ_s, \quad \hat{n}_2\cdot\vD_1 = \rho_s
 \]
 \end{formulabox}
 
+\textbf{題目}：$y=0$ 平面將上半空間（$y>0$，空氣）與完美導體分開。交界面上有表面電荷密度 $\rho_s = C_1\cos\beta z$ 及表面電流密度 $\vJ_s = \az C_2\sin\beta z$。求交界面空氣側的 $\vE$ 和 $\vH$。
+
 \begin{solutionbox}[詳解]
-從手寫解答可見，此題要求在介質與完美導體的交界面上，利用以上邊界條件：
 
-\begin{enumerate}
-  \item 完美導體內部所有場為零
-  \item 在交界面上，介質側的切向 $\vE$ 必須為零
-  \item 介質側的法向 $\vB$ 必須為零
-  \item 表面電流 $\vJ_s = \hat{\mathbf{n}}_2 \times \vH_1$
-\end{enumerate}
+法線 $\hat{\mathbf{n}}_2 = \ay$（從 PEC 指向空氣）。
 
-若已知入射波的 $\vH$ 場在邊界上的切向分量，即可直接算出表面電流密度 $\vJ_s$。
+\textbf{Step 1：求 $\vE$}
 
-例如：若 $\vH_1 = \ax C_0 \sin\beta z$ 在邊界面上（$\hat{\mathbf{n}}_2 = -\ay$），則：
+\begin{itemize}
+  \item \textbf{切向分量}：PEC 邊界條件 $\Rightarrow$ $E_x = 0$，$E_z = 0$
+  \item \textbf{法向分量}：$\hat{n}_2\cdot\vD_1 = \rho_s$
+    \[
+      \varepsilon_0 E_y = C_1\cos\beta z
+      \quad\Rightarrow\quad E_y = \frac{C_1}{\varepsilon_0}\cos\beta z
+    \]
+\end{itemize}
 \[
-  \vJ_s = (-\ay) \times (\ax C_0 \sin\beta z) = \az C_0 \sin\beta z \;\text{(A/m)}
+  \boxed{\vE\big|_{y=0^+} = \ay\,\frac{C_1}{\varepsilon_0}\cos\beta z \;\text{(V/m)}}
 \]
+
+\textbf{Step 2：求 $\vH$}
+
+\begin{itemize}
+  \item \textbf{法向分量}：$B_{1n} = 0 \Rightarrow H_y = 0$
+  \item \textbf{切向分量}：$\hat{n}_2\times\vH_1 = \vJ_s$
+\end{itemize}
+
+展開叉積（$\vH_1 = H_x\ax + H_z\az$，因 $H_y=0$）：
+\[
+  \ay\times(H_x\ax + H_z\az) = H_x(\ay\times\ax) + H_z(\ay\times\az)
+  = -H_x\az + H_z\ax
+\]
+令其等於 $\vJ_s = \az C_2\sin\beta z$：
+\begin{align*}
+  \ax\text{ 分量}：&\quad H_z = 0 \\
+  \az\text{ 分量}：&\quad -H_x = C_2\sin\beta z \;\Rightarrow\; H_x = -C_2\sin\beta z
+\end{align*}
+\[
+  \boxed{\vH\big|_{y=0^+} = -\ax\,C_2\sin\beta z \;\text{(A/m)}}
+\]
+
+\textbf{概念}：PEC 邊界上切向 $\vE = 0$，法向 $\vE$ 由表面電荷決定；切向 $\vH$ 由表面電流決定，法向 $\vH = 0$。
 \end{solutionbox}
 
 %-----------------------------------------------------------------------------
-\section{第 3 題 — 波的疊加}
+\section{第 3 題（10 分）— 相量法求波的合成}
 %-----------------------------------------------------------------------------
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
-  \item 兩個同頻率、不同振幅和相位的波疊加
-  \item 利用相量加法合成為單一正弦波
-  \item 合成振幅 $= \sqrt{A^2 + B^2 + 2AB\cos\Delta\phi}$
+  \item 兩同頻波疊加，用\textbf{相量加法}合成
+  \item $\cos$ 的相量 $= A$，$\sin$ 的相量 $= -jA$（因 $\sin\theta = \cos(\theta - 90°)$）
+  \item 合成結果為實數 $\Rightarrow$ 虛部 $= 0$
 \end{itemize}
 \end{conceptbox}
 
-\begin{formulabox}[相量加法]
-\[
-  A\cos(\omega t + \phi_1) + B\cos(\omega t + \phi_2)
-  = C\cos(\omega t + \phi_3)
-\]
-其中
-\[
-  C = \sqrt{A^2 + B^2 + 2AB\cos(\phi_1 - \phi_2)}, \quad
-  \phi_3 = \tan^{-1}\!\left(\frac{A\sin\phi_1 + B\sin\phi_2}{A\cos\phi_1 + B\cos\phi_2}\right)
-\]
-\end{formulabox}
+\textbf{題目}：$\vE(z,t) = \ax E_0\cos(\omega t - kz)$ 是以下兩波之和：
+\begin{align*}
+  \vE_1(z,t) &= \ax\,10^{-3}\sin(\omega t - kz) \;\text{(V/m)} \\
+  \vE_2(z,t) &= \ax\,3\times10^{-3}\cos(\omega t - kz + \phi) \;\text{(V/m)}
+\end{align*}
+求 $E_0$ 和 $\phi$。
 
 \begin{solutionbox}[詳解]
-此題涉及兩個在同一方向傳播的波的合成：
 
-\[
-  \vE(z,t) = \vE_1(z,t) + \vE_2(z,t)
-\]
-
-其中 $\vE_1$ 和 $\vE_2$ 有不同振幅（如 $10^{-3}$ 和 $3\times10^{-3}$）和可能不同的相位 $\phi$。
-
-用相量法：
+轉為相量（省略空間因子 $e^{-jkz}$）：
 \begin{align*}
-  \tilde{E} &= A e^{j\phi_1} + B e^{j\phi_2} \\
-  &= (A\cos\phi_1 + B\cos\phi_2) + j(A\sin\phi_1 + B\sin\phi_2) \\
-  &= C\, e^{j\phi_3}
+  \tilde{E}_1 &= 10^{-3}\times(-j) = -j\times10^{-3}
+  & &\text{（}\sin\to\text{乘以 }-j\text{）} \\
+  \tilde{E}_2 &= 3\times10^{-3}\,e^{j\phi}
+  = 3\times10^{-3}(\cos\phi + j\sin\phi)
 \end{align*}
 
-合成結果：
+合成：
 \[
-  \vE(z,t) = \ax\, C \cos(\omega t - kz + \phi_3) \;\text{(V/m)}
+  \tilde{E} = \tilde{E}_1 + \tilde{E}_2
+  = 3\times10^{-3}\cos\phi + j\bigl(3\times10^{-3}\sin\phi - 10^{-3}\bigr)
 \]
 
-其中 $C = |A e^{j\phi_1} + B e^{j\phi_2}|$，$\phi_3 = \angle(A e^{j\phi_1} + B e^{j\phi_2})$。
+結果為 $E_0\cos(\omega t - kz)$，相量 $= E_0$（\textbf{實數}），故虛部 $= 0$：
+\[
+  3\times10^{-3}\sin\phi - 10^{-3} = 0
+  \quad\Rightarrow\quad \sin\phi = \frac{1}{3}
+\]
+\[
+  \boxed{\phi = \sin^{-1}\!\left(\frac{1}{3}\right) \approx 19.47°}
+\]
 
-具體數值取決於題目給定的 $A$、$B$、$\phi_1$、$\phi_2$。
+實部即為 $E_0$：
+\[
+  E_0 = 3\times10^{-3}\cos\phi = 3\times10^{-3}\sqrt{1 - \frac{1}{9}}
+  = 3\times10^{-3}\times\frac{2\sqrt{2}}{3} = 2\sqrt{2}\times10^{-3}
+\]
+\[
+  \boxed{E_0 = 2\sqrt{2}\times10^{-3} \approx 2.83\times10^{-3} \;\text{V/m}}
+\]
+
+\textbf{驗算}：$\tilde{E} = -j\times10^{-3} + 3\times10^{-3}e^{j\,19.47°}
+= -j\times10^{-3} + 2.83\times10^{-3} + j\times10^{-3} = 2.83\times10^{-3}$ ✓
 \end{solutionbox}
 
 %-----------------------------------------------------------------------------
-\section{第 4 題 — 均勻平面波（與 2024 第 4 題同類型）}
-%-----------------------------------------------------------------------------
-
-此題與 2024 年第 4 題幾乎相同，請參考前述詳解。要點整理：
-
-\begin{itemize}
-  \item 沿 $-z$ 方向傳播的 $x$ 極化波：$e^{+jkz}$
-  \item $\vH$ 方向：$\hat{\vk} \times \vE / \eta$
-  \item 若 $\vE = \ax E_0\cos(\omega t + kz)$（$-z$ 傳播），則 $\vH = \ay\,\dfrac{E_0}{\eta_0}\cos(\omega t + kz)$\\
-    （因為 $(-\az)\times\ax = -\ay$... 取負號要注意方向）
-\end{itemize}
-
-%-----------------------------------------------------------------------------
-\section{第 5 題 — 介電質中平面波（含極化分析）}
-%-----------------------------------------------------------------------------
-
-此題與 2024 年第 6 題幾乎相同（$\omega = 5\times10^7$，$\beta = 1/\sqrt{5}$），且要求判斷極化。
-
-$\vE$ 有兩個分量：$x$ 分量振幅 5，$y$ 分量振幅 1，相位差 $90°$。
-
-\begin{solutionbox}[極化分析]
-\[
-  \vE(z,t) = \ax\,5\cos\Psi + \ay\,\sin\Psi, \quad \Psi = 5\times10^7 t - z/\sqrt{5}
-\]
-
-振幅比 $5:1$，相位差 $90°$ $\Rightarrow$ \textbf{橢圓極化}。
-
-在固定 $z$ 處：
-\begin{itemize}
-  \item $\Psi = 0$：$E_x = 5$，$E_y = 0$ → 指向 $+x$
-  \item $\Psi = \pi/2$：$E_x = 0$，$E_y = 1$ → 指向 $+y$
-\end{itemize}
-
-傳播方向 $+z$，面向 $+z$ 觀察：$+x \to +y$ 為\textbf{逆時針}。
-
-\[
-  \boxed{\text{左旋橢圓極化（LHEP）}}
-\]
-
-（注意：在某些教科書定義中，若使用 $e^{j\omega t}$ 慣例，右/左旋的定義可能不同。此處採用面向傳播方向觀察的 IEEE 慣例。）
-\end{solutionbox}
-
-%-----------------------------------------------------------------------------
-\section{第 6 題 — 良導體中的波傳播}
+\section{第 4 題（20 分）— 均勻平面波}
 %-----------------------------------------------------------------------------
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
-  \item 良導體中 $\alpha = \beta = \sqrt{\pi f \mu \sigma}$
-  \item 本質阻抗帶有 $45°$ 相角：$\eta_c = \sqrt{\omega\mu/\sigma}\,\angle 45°$
-  \item 波速極慢，衰減極快
+  \item 沿 $-z$ 傳播：空間因子 $e^{+jkz}$
+  \item $\vH = \frac{1}{\eta}\hat{\vk}\times\vE$
+  \item 波向量 $\vk$ 的方向即傳播方向，$|\vk| = \beta = 2\pi/\lambda$
 \end{itemize}
 \end{conceptbox}
 
-\textbf{題目}（由手寫解答重建）：$f = 1$ kHz，$\sigma = 4$ S/m，$\mu_r = 1$，$\varepsilon_r \approx 1$，磁場振幅 100 A/m。
+\subsection*{(a)(b)：$x$ 極化波在空氣中沿 $-z$ 傳播}
+
+\textbf{題目}：振幅 $E_0$、頻率 $f$、$x$ 方向線性極化、沿 $-z$ 方向傳播。
 
 \begin{solutionbox}[詳解]
+
+$k = 2\pi f/c$，沿 $-z$ 傳播用 $e^{+jkz}$。
+
+\textbf{(a) $\vE$ 的表示式：}
+
+瞬時式：$\vE(z,t) = \ax\,E_0\cos(\omega t + kz)$
+
+相量式：$\tilde{\vE}(z) = \ax\,E_0\,e^{jkz}$
+
+\textbf{(b) $\vH$ 的表示式：}
+
+$\hat{\vk} = -\az$，$\hat{\vk}\times\ax = (-\az)\times\ax = -\ay$
+
+\[
+  \boxed{\vH(z,t) = -\ay\,\frac{E_0}{\eta_0}\cos(\omega t + kz), \quad
+  \tilde{\vH}(z) = -\ay\,\frac{E_0}{\eta_0}e^{jkz}}
+\]
+
+\textbf{驗證}：$\vE\times\vH = \ax\times(-\ay)\cdot(\cdots) = -\az\cdot(\cdots)$，方向為 $-z$ ✓
+\end{solutionbox}
+
+\subsection*{(c)：在介質中，$\vk = \ax\,4 - \az\,3$ \;$\mu$m$^{-1}$}
+
+\begin{solutionbox}[詳解]
+
+$|\vk| = \sqrt{4^2 + 3^2} = 5\;\mu\text{m}^{-1} = 5\times10^6\;\text{m}^{-1}$
+
+\textbf{波長}：
+\[
+  \boxed{\lambda = \frac{2\pi}{|\vk|} = \frac{2\pi}{5\times10^6} \approx 1.257\;\mu\text{m}}
+\]
+
+\textbf{傳播方向}：$\hat{\vk} = (4\ax - 3\az)/5 = 0.8\ax - 0.6\az$
+
+$\vE$ 必須垂直於 $\vk$。在 $xz$ 平面內傳播，最自然的極化方向是 $\ay$（垂直於 $xz$ 平面）：
+\[
+  \vk\cdot\mathbf{r} = 4\times10^6 x - 3\times10^6 z
+\]
+\[
+  \boxed{\vE = \ay\,E_0\cos(\omega t - 4\times10^6 x + 3\times10^6 z) \;\text{(V/m)}}
+\]
+\end{solutionbox}
+
+%-----------------------------------------------------------------------------
+\section{第 5 題（25 分）— 介電質中平面波（含極化分析）}
+%-----------------------------------------------------------------------------
+
+此題與 2024 年第 6 題完全相同。$\vE(z,t) = \ax\,5\cos\Psi + \ay\sin\Psi$，$\Psi = 5\times10^7 t - z/\sqrt{5}$。
+
+數值結果：$f\approx 7.96$ MHz，$\lambda\approx 14.05$ m，$\varepsilon_r\approx 7.2$，$\eta\approx 140.5\;\Omega$。
+
+請參考 2024 第 6 題的完整計算過程。以下補充\textbf{極化分析}（本題特有）：
+
+\begin{solutionbox}[極化分析與圖示]
+
+$\vE$ 有兩個正交分量：$E_x = 5\cos\Psi$（振幅 5），$E_y = \sin\Psi$（振幅 1），相位差 $90°$。
+
+\textbf{振幅不等 + $90°$ 相差 $\Rightarrow$ 橢圓極化}。
+
+在固定 $z$ 處隨時間描跡：
+\begin{itemize}
+  \item $\Psi = 0$：$(E_x, E_y) = (5, 0)$ → $+x$
+  \item $\Psi = \pi/2$：$(E_x, E_y) = (0, 1)$ → $+y$
+  \item $\Psi = \pi$：$(E_x, E_y) = (-5, 0)$ → $-x$
+  \item $\Psi = 3\pi/2$：$(E_x, E_y) = (0, -1)$ → $-y$
+\end{itemize}
+
+軌跡方程：$\left(\dfrac{E_x}{5}\right)^2 + E_y^2 = 1$（橢圓，長軸在 $x$，軸比 $5:1$）
+
+面向 $+z$（傳播方向）觀察：$+x \to +y$ 為\textbf{逆時針}。
+
+\[
+  \boxed{\text{左旋橢圓極化（LHEP, Left-Hand Elliptical Polarization）}}
+\]
+\end{solutionbox}
+
+%-----------------------------------------------------------------------------
+\section{第 6 題（30 分）— 海水中的波傳播（良導體）}
+%-----------------------------------------------------------------------------
+
+\begin{conceptbox}[核心概念]
+\begin{itemize}
+  \item 良導體中 $\alpha = \beta = \sqrt{\pi f\mu\sigma}$
+  \item 本質阻抗 $\eta_c = (1+j)\sqrt{\omega\mu/(2\sigma)}$，相角 $45°$
+  \item 需從 Maxwell 方程推導 $\alpha$、$\beta$ 公式
+\end{itemize}
+\end{conceptbox}
+
+\textbf{題目}：均勻平面波沿 $+z$（向下）傳入海洋。$\varepsilon_r = 80$，$\mu_r = 1$，$\sigma = 4$ S/m。海面（$z=0$）的磁場為
+\[
+  \vH(0,t) = \ay\,100\cos(2\pi\times10^3 t + 15°) \;\text{mA/m}
+\]
+
+\begin{solutionbox}[詳解]
+
+已知：$f = 10^3$ Hz，$\omega = 2\pi\times10^3$ rad/s，$H_0 = 100$ mA/m $= 0.1$ A/m。
 
 \textbf{(a) 良導體判定：}
 \[
-  \frac{\sigma}{\omega\varepsilon} = \frac{4}{2\pi\times10^3 \times 8.854\times10^{-12}}
-  \approx 7.2\times10^7 \gg 1
-\]
-$\boxed{\text{是良導體}}$
-
-\textbf{(b) 傳播常數：}
-
-良導體公式：
-\[
-  \alpha = \beta = \sqrt{\pi f \mu_0 \sigma} = \sqrt{\pi \times 10^3 \times 4\pi\times10^{-7} \times 4}
+  \frac{\sigma}{\omega\varepsilon} = \frac{4}{2\pi\times10^3 \times 80\times8.854\times10^{-12}}
+  = \frac{4}{4.45\times10^{-6}} \approx 9\times10^5 \gg 1
 \]
 \[
-  = \sqrt{\pi \times 10^3 \times 4\pi \times 4 \times 10^{-7}}
-  = \sqrt{16\pi^2 \times 10^{-4}} = 4\pi \times 10^{-2}
-\]
-\[
-  \boxed{\alpha = \beta \approx 0.126 \;\text{Np/m（或 rad/m）}}
+  \boxed{\text{是良導體（good conductor），因為 }\sigma/(\omega\varepsilon) \approx 9\times10^5 \gg 1}
 \]
 
-\textbf{集膚深度}：
+\textbf{(b) 推導 $\alpha$ 和 $\beta$ 的公式：}
+
+從 $\nabla\times\vH = \vJ + j\omega\varepsilon\vE = (\sigma + j\omega\varepsilon)\vE = j\omega\varepsilon_c\vE$
+
+波動方程給出：$\gamma = j k_c = \alpha + j\beta$
+
+其中 $k_c^2 = \omega^2\mu\varepsilon_c = \omega^2\mu(\varepsilon - j\sigma/\omega) = \omega^2\mu\varepsilon - j\omega\mu\sigma$
+
+對良導體（$\sigma \gg \omega\varepsilon$）：
 \[
-  \boxed{\delta = \frac{1}{\alpha} = \frac{1}{0.126} \approx 7.94 \;\text{m}}
+  k_c^2 \approx -j\omega\mu\sigma \quad\Rightarrow\quad k_c = \sqrt{-j}\cdot\sqrt{\omega\mu\sigma} = \frac{1-j}{\sqrt{2}}\sqrt{\omega\mu\sigma}
 \]
 
-\textbf{(c) 相速：}
-\[
-  \boxed{u_p = \frac{\omega}{\beta} = \frac{2\pi\times10^3}{0.126} \approx 5.0\times10^4 \;\text{m/s}}
-\]
-注意這遠小於光速！
+$\gamma = jk_c = j\cdot\dfrac{1-j}{\sqrt{2}}\sqrt{\omega\mu\sigma} = \dfrac{j-j^2}{\sqrt{2}}\sqrt{\omega\mu\sigma} = \dfrac{1+j}{\sqrt{2}}\sqrt{\omega\mu\sigma}$
 
-\textbf{本質阻抗}（良導體）：
 \[
-  \eta_c = (1+j)\frac{\alpha}{\sigma} = (1+j)\frac{0.126}{4}
-  = (1+j)\times 0.0315
-\]
-\[
-  \boxed{|\eta_c| \approx 0.0445\;\Omega, \quad \theta_\eta = 45°}
+  \boxed{\alpha = \beta = \sqrt{\frac{\omega\mu\sigma}{2}} = \sqrt{\pi f\mu\sigma}}
 \]
 
-\textbf{(d) 寫出 $\vE(z,t)$：}
-
-已知 $\vH = \ay\,100\,e^{-\alpha z}\cos(\omega t - \beta z + 15°)$ A/m
-
-利用 $\vE = \eta_c\,\hat{\vk}\times\vH$（對良導體要加 $45°$ 相移）：
-
-$\hat{\vk}\times\ay = \az\times\ay = -\ax$
+\textbf{(c) 數值計算：}
 \[
-  \vE(z,t) = -\ax\,100\times0.0445\,e^{-0.126z}\cos(2\pi\times10^3 t - 0.126z + 15° + 45°)
+  \alpha = \beta = \sqrt{\pi\times10^3\times4\pi\times10^{-7}\times4}
+  = \sqrt{16\pi^2\times10^{-4}} = 4\pi\times10^{-2} \approx 0.126\;\text{Np/m}
 \]
 \[
-  \boxed{\vE(z,t) = -\ax\,4.45\,e^{-0.126z}\cos(2\pi\times10^3 t - 0.126z + 60°) \;\text{(V/m)}}
+  \boxed{\alpha = \beta \approx 0.126\;\text{Np/m}, \quad \delta = \frac{1}{\alpha} \approx 7.94\;\text{m}}
 \]
 
-\textbf{(e) 時間平均功率密度：}
+\textbf{(d) 相速與本質阻抗：}
 \[
-  \vS_{\text{av}} = \frac{1}{2}\text{Re}[\tilde{\vE}\times\tilde{\vH}^*]
-  = \az\,\frac{1}{2}\times 100 \times 100 \times 0.0445 \times e^{-2\times0.126z}\cos 45°
+  \boxed{u_p = \frac{\omega}{\beta} = \frac{2\pi\times10^3}{0.126} \approx 5.0\times10^4\;\text{m/s}}
+\]
+（遠小於光速！）
+\[
+  \eta_c = (1+j)\frac{\alpha}{\sigma} = (1+j)\times\frac{0.126}{4} = (1+j)\times0.0314
 \]
 \[
-  \boxed{\vS_{\text{av}} = \az\,157.3\,e^{-0.252z} \;\text{(W/m}^2\text{)}}
+  \boxed{|\eta_c| = 0.0314\sqrt{2} \approx 0.0444\;\Omega, \quad \theta_\eta = 45°}
+\]
+
+\textbf{(e) 場的表示式：}
+
+$\vH$ 在 $z>0$（海水內部）加上衰減與相位延遲：
+\[
+  \vH(z,t) = \ay\,0.1\,e^{-0.126z}\cos(2\pi\times10^3 t - 0.126z + 15°) \;\text{A/m}
+\]
+
+$\vE$ 方向：由 $\vH = \frac{1}{\eta_c}\hat{\vk}\times\vE$ 得 $\vE = -\eta_c(\hat{\vk}\times\vH)$：
+\[
+  -(\az\times\ay) = -(-\ax) = \ax
+\]
+加上 $\eta_c$ 的 $45°$ 相移：
+\[
+  E_0 = |\eta_c|\times H_0 = 0.0444\times0.1 = 4.44\times10^{-3}\;\text{V/m}
+\]
+\[
+  \boxed{\vE(z,t) = \ax\,4.44\times10^{-3}\,e^{-0.126z}\cos(2\pi\times10^3 t - 0.126z + 60°) \;\text{V/m}}
+\]
+
+（$15° + 45° = 60°$）
+
+\textbf{(f) 單位面積平均功率損耗（隨 $z$ 的函數）：}
+\[
+  \vS_{\text{av}} = \frac{1}{2}E_0 H_0\cos\theta_\eta\,e^{-2\alpha z}\,\az
+\]
+\[
+  = \frac{1}{2}\times4.44\times10^{-3}\times0.1\times\cos45°\times e^{-0.252z}\,\az
+\]
+\[
+  \boxed{\vS_{\text{av}} = \az\,1.57\times10^{-4}\,e^{-0.252z} \;\text{W/m}^2}
+\]
+\end{solutionbox}
+
+%-----------------------------------------------------------------------------
+\section{第 7 題（15 分）— 短電流元天線輻射}
+%-----------------------------------------------------------------------------
+
+\begin{conceptbox}[核心概念]
+\begin{itemize}
+  \item 天線遠場的 $\vE$ 和 $\vH$ 與 $1/R$ 成正比
+  \item 坡印廷向量 $\vS \propto 1/R^2$，對球面積分後 $R^2$ 消去
+  \item 相量轉瞬時：乘以 $e^{j\omega t}$ 取實部；$j = e^{j\pi/2}$ 產生 $\cos\to -\sin$ 或 $+90°$ 相移
+\end{itemize}
+\end{conceptbox}
+
+\begin{formulabox}[相關公式]
+\[
+  \vS = \vE\times\vH, \quad \vS_{\text{av}} = \frac{1}{2}\text{Re}[\tilde{\vE}\times\tilde{\vH}^*]
+\]
+\[
+  \int_0^\pi \cos^2\theta\sin\theta\,d\theta = \frac{2}{3}, \quad
+  d\vS = \aR R^2\sin\theta\,d\theta\,d\phi
+\]
+\end{formulabox}
+
+\textbf{題目}：位於原點的短電流元 $Id\ell$ 的遠場相量為：
+\begin{align*}
+  \tilde{\vE}(R,\theta) &= \ath\,j\frac{30\pi\,Id\ell}{\lambda R}\cos\theta\;e^{-j\beta R} \;\text{(V/m)} \\[4pt]
+  \tilde{\vH}(R,\theta) &= \aph\,j\frac{Id\ell}{4\lambda R}\cos\theta\;e^{-j\beta R} \;\text{(A/m)}
+\end{align*}
+
+\begin{solutionbox}[詳解]
+
+\textbf{(a) 瞬時表示式：}
+
+$j = e^{j\pi/2}$，所以 $\text{Re}[j\,A\,e^{j(\omega t - \beta R)}] = A\cos(\omega t - \beta R + 90°) = -A\sin(\omega t - \beta R)$
+
+\[
+  \boxed{\vE(R,\theta,t) = -\ath\,\frac{30\pi\,Id\ell}{\lambda R}\cos\theta\;\sin(\omega t - \beta R) \;\text{(V/m)}}
+\]
+\[
+  \boxed{\vH(R,\theta,t) = -\aph\,\frac{Id\ell}{4\lambda R}\cos\theta\;\sin(\omega t - \beta R) \;\text{(A/m)}}
+\]
+
+\textbf{(b) 瞬時坡印廷向量：}
+
+$\ath\times\aph = \aR$，兩個負號相消：
+\begin{align*}
+  \vS &= \vE\times\vH = \aR\,\frac{30\pi\,(Id\ell)^2}{4\lambda^2 R^2}\cos^2\theta\;\sin^2(\omega t - \beta R)
+\end{align*}
+\[
+  \boxed{\vS = \aR\,\frac{30\pi\,(Id\ell)^2}{4\lambda^2 R^2}\cos^2\theta\;\sin^2(\omega t - \beta R) \;\text{(W/m}^2\text{)}}
+\]
+
+\textbf{(c) 時間平均輻射功率：}
+
+$\langle\sin^2\rangle = 1/2$：
+\[
+  S_{\text{av}} = \frac{30\pi\,(Id\ell)^2}{8\lambda^2 R^2}\cos^2\theta
+\]
+\[
+  P_{\text{av}} = \int_0^{2\pi}\!\int_0^\pi S_{\text{av}}\,R^2\sin\theta\,d\theta\,d\phi
+  = \frac{30\pi\,(Id\ell)^2}{8\lambda^2}\times 2\pi\times\frac{2}{3}
+\]
+\[
+  = \frac{30\pi\times 4\pi}{24\lambda^2}(Id\ell)^2
+  = \frac{120\pi^2}{24\lambda^2}(Id\ell)^2
+  = \frac{5\pi^2(Id\ell)^2}{\lambda^2}
+\]
+\[
+  \boxed{P_{\text{av}} = \frac{5\pi^2(Id\ell)^2}{\lambda^2} \;\text{(W)}}
 \]
 \end{solutionbox}
 
