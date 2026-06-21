@@ -1,0 +1,718 @@
+% !TEX program = xelatex
+\documentclass[12pt,a4paper]{article}
+
+% ===== 中文支援 =====
+\usepackage{fontspec}
+\usepackage[CJKmath=true]{xeCJK}
+\setCJKmainfont{Microsoft JhengHei}
+\setCJKsansfont{Microsoft JhengHei}
+\setCJKmonofont{Microsoft JhengHei}
+
+% ===== 數學與排版 =====
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{bm}
+\usepackage{esint}
+\usepackage{booktabs}
+\usepackage{array}
+
+% ===== 自訂指令 =====
+\newcommand{\vE}{\mathbf{E}}
+\newcommand{\vB}{\mathbf{B}}
+\newcommand{\vH}{\mathbf{H}}
+\newcommand{\vJ}{\mathbf{J}}
+\newcommand{\vD}{\mathbf{D}}
+\newcommand{\vA}{\mathbf{A}}
+\newcommand{\vF}{\mathbf{F}}
+\newcommand{\vS}{\boldsymbol{\mathcal{P}}}
+\newcommand{\vk}{\mathbf{k}}
+\newcommand{\vu}{\mathbf{u}}
+\newcommand{\ax}{\hat{\mathbf{a}}_x}
+\newcommand{\ay}{\hat{\mathbf{a}}_y}
+\newcommand{\az}{\hat{\mathbf{a}}_z}
+\newcommand{\aR}{\hat{\mathbf{a}}_R}
+\newcommand{\ath}{\hat{\mathbf{a}}_\theta}
+\newcommand{\aph}{\hat{\mathbf{a}}_\phi}
+\newcommand{\an}{\hat{\mathbf{a}}_n}
+\newcommand{\ak}{\hat{\mathbf{a}}_k}
+\newcommand{\emf}{\mathcal{V}}
+\newcommand{\Rea}{\operatorname{\mathcal{R}\!e}}
+
+% ===== 彩色框 =====
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{keybox}[1][]{
+  colback=red!5!white,
+  colframe=red!70!black,
+  fonttitle=\bfseries,
+  title={#1},
+  breakable
+}
+
+\newtcolorbox{notebox}[1][]{
+  colback=blue!5!white,
+  colframe=blue!60!black,
+  fonttitle=\bfseries,
+  title={#1},
+  breakable
+}
+
+\newtcolorbox{tipbox}[1][]{
+  colback=green!5!white,
+  colframe=green!50!black,
+  fonttitle=\bfseries,
+  title={#1},
+  breakable
+}
+
+\newtcolorbox{warnbox}[1][]{
+  colback=orange!5!white,
+  colframe=orange!70!black,
+  fonttitle=\bfseries,
+  title={#1},
+  breakable
+}
+
+% ===== 頁首頁尾 =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 電磁學（二）課本重點筆記}
+\fancyhead[R]{\small Ch.\,6--7.5}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ===== 標題格式 =====
+\titleformat{\section}{\Large\bfseries\color{blue!70!black}}{第\,\thesection\,章}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries\color{red!70!black}}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{green!50!black}}{\thesubsubsection}{0.5em}{}
+
+\title{\Huge\bfseries 電磁學（二）課本重點筆記\\[6pt]
+\Large Chapter 6 -- 7.5 精華整理}
+\author{依據 D.\,K.\,Cheng 教材}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+%==========================================================
+\part{Chapter 6：時變場與 Maxwell 方程式}
+%==========================================================
+
+\section{概述（6-1）}
+
+靜態模型中 $\vE$、$\vD$ 與 $\vB$、$\vH$ 彼此獨立。
+時變情況下，電場與磁場透過 Maxwell 方程式\textbf{耦合}在一起，
+產生可以傳播能量與資訊的\textbf{電磁波}。
+
+\begin{notebox}[靜態 → 時變的關鍵改變]
+\begin{itemize}[nosep]
+  \item $\nabla\times\vE = 0$ 被改為 $\nabla\times\vE = -\dfrac{\partial\vB}{\partial t}$（Faraday 定律）
+  \item $\nabla\times\vH = \vJ$ 被改為 $\nabla\times\vH = \vJ + \dfrac{\partial\vD}{\partial t}$（加入位移電流）
+\end{itemize}
+\end{notebox}
+
+%----------------------------------------------------------
+\section{Faraday 電磁感應定律（6-2）}
+%----------------------------------------------------------
+
+\subsection{基本公設}
+
+\begin{keybox}[Faraday 定律——微分形式]
+\[
+\boxed{\nabla\times\vE = -\frac{\partial\vB}{\partial t}}
+\]
+\textbf{意義}：時變磁場會產生電場；此時電場\textbf{不再保守}，不能單由純量電位描述。
+\end{keybox}
+
+積分形式（由 Stokes 定理）：
+\[
+\oint_C \vE\cdot d\boldsymbol{\ell} = -\int_S \frac{\partial\vB}{\partial t}\cdot d\mathbf{s}
+\]
+
+\subsection{三種情境}
+
+\subsubsection{靜止迴路在時變磁場中（Transformer EMF）}
+
+\begin{keybox}[變壓器 EMF]
+\[
+\emf = -\frac{d\Phi}{dt}, \qquad \Phi = \int_S \vB\cdot d\mathbf{s}
+\]
+\textbf{Lenz 定律}：感應 EMF 所產生的電流方向會\textbf{反對}磁通量的變化。
+\end{keybox}
+
+\begin{tipbox}[解題步驟]
+\begin{enumerate}[nosep]
+  \item 求磁通量 $\Phi = \int_S \vB\cdot d\mathbf{s}$
+  \item 對時間微分 $\emf = -d\Phi/dt$
+  \item 若有 $N$ 匝，$\emf = -N\,d\Phi/dt$
+\end{enumerate}
+\end{tipbox}
+
+\subsubsection{運動導體在靜磁場中（Motional EMF）}
+
+導體以速度 $\vu$ 在磁場 $\vB$ 中運動，自由電荷受力 $\vF_m = q\,\vu\times\vB$。
+
+\begin{keybox}[動生 EMF]
+\[
+\emf'' = \oint_C (\vu\times\vB)\cdot d\boldsymbol{\ell}
+\]
+只有\textbf{運動部分}且運動方向\textbf{不平行}於 $\vB$ 的導體段才有貢獻。
+\end{keybox}
+
+\subsubsection{運動迴路在時變磁場中（一般形式）}
+
+\begin{keybox}[Faraday 定律——一般形式]
+\[
+\emf' = \oint_C \vE'\cdot d\boldsymbol{\ell}
+= \underbrace{-\int_S \frac{\partial\vB}{\partial t}\cdot d\mathbf{s}}_{\text{Transformer EMF}}
++ \underbrace{\oint_C (\vu\times\vB)\cdot d\boldsymbol{\ell}}_{\text{Motional EMF}}
+\]
+等價於 $\emf' = -\dfrac{d\Phi}{dt}$（對運動迴路也成立）。
+\end{keybox}
+
+\subsection{變壓器}
+
+\begin{notebox}[理想變壓器（$\mu\to\infty$, $\mathcal{R}=0$）]
+\[
+\frac{v_1}{v_2} = \frac{N_1}{N_2}, \qquad
+\frac{i_1}{i_2} = \frac{N_2}{N_1}, \qquad
+(Z_1)_{\text{eff}} = \left(\frac{N_1}{N_2}\right)^2 Z_L
+\]
+\end{notebox}
+
+\begin{warnbox}[渦電流（Eddy Currents）]
+時變磁通量在導體磁芯中感應出局部迴流電流 → 歐姆損耗 → 發熱。\\
+\textbf{對策}：使用\textbf{疊層鐵芯}（laminated cores），絕緣層\textbf{平行}於磁通量方向。
+\end{warnbox}
+
+%----------------------------------------------------------
+\section{Maxwell 方程式（6-3）}
+%----------------------------------------------------------
+
+\subsection{位移電流的引入}
+
+靜磁學 $\nabla\times\vH = \vJ$ 與電荷守恆 $\nabla\cdot\vJ = -\partial\rho_v/\partial t$ 矛盾：
+\[
+\nabla\cdot(\nabla\times\vH) = \nabla\cdot\vJ \neq 0 \quad\text{（時變時）}
+\]
+Maxwell 加入\textbf{位移電流密度} $\partial\vD/\partial t$ 修正：
+
+\begin{keybox}[Maxwell 四大方程式——微分形式]
+\[
+\begin{aligned}
+\nabla\times\vE &= -\frac{\partial\vB}{\partial t} & &\text{(Faraday)} \\[4pt]
+\nabla\times\vH &= \vJ + \frac{\partial\vD}{\partial t} & &\text{(Amp\`{e}re--Maxwell)} \\[4pt]
+\nabla\cdot\vD &= \rho_v & &\text{(Gauss)} \\[4pt]
+\nabla\cdot\vB &= 0 & &\text{(no magnetic monopole)}
+\end{aligned}
+\]
+\end{keybox}
+
+\begin{keybox}[Maxwell 四大方程式——積分形式]
+\[
+\begin{aligned}
+\oint_C \vE\cdot d\boldsymbol{\ell} &= -\frac{d\Phi}{dt} & &\text{(Faraday)} \\[4pt]
+\oint_C \vH\cdot d\boldsymbol{\ell} &= I + \int_S \frac{\partial\vD}{\partial t}\cdot d\mathbf{s} & &\text{(Amp\`{e}re)} \\[4pt]
+\oint_S \vD\cdot d\mathbf{s} &= Q & &\text{(Gauss)} \\[4pt]
+\oint_S \vB\cdot d\mathbf{s} &= 0 & &\text{(no monopole)}
+\end{aligned}
+\]
+\end{keybox}
+
+\subsection{電磁邊界條件}
+
+\begin{keybox}[一般邊界條件]
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{切線分量} & \textbf{法線分量} \\
+\midrule
+$E_{1t} = E_{2t}$ & $D_{1n} - D_{2n} = \rho_s$ \\
+$\hat{\mathbf{a}}_{n2}\times(\vH_1 - \vH_2) = \vJ_s$ & $B_{1n} = B_{2n}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{keybox}
+
+\begin{notebox}[兩種特殊情況]
+\textbf{A. 兩無損介質界面}（$\rho_s=0$, $\vJ_s=0$）：
+\[
+E_{1t}=E_{2t},\quad H_{1t}=H_{2t},\quad D_{1n}=D_{2n},\quad B_{1n}=B_{2n}
+\]
+$\Rightarrow$ \textbf{四個分量全連續}。
+
+\textbf{B. 介質--完美導體 (PEC) 界面}（介質為 1，PEC 為 2）：\\
+PEC 內部 $\vE_2=\vH_2=\vD_2=\vB_2=0$。
+\[
+E_{1t}=0,\quad \hat{\mathbf{a}}_{n2}\times\vH_1=\vJ_s,\quad D_{1n}=\rho_s,\quad B_{1n}=0
+\]
+$\Rightarrow$ PEC 表面切線 $\vE=0$，法線 $\vB=0$。
+\end{notebox}
+
+%----------------------------------------------------------
+\section{位勢函數（6-4）}
+%----------------------------------------------------------
+
+\begin{keybox}[向量磁位 $\vA$ 與純量電位 $V$]
+\[
+\vB = \nabla\times\vA, \qquad
+\vE = -\nabla V - \frac{\partial\vA}{\partial t}
+\]
+\end{keybox}
+
+\textbf{Lorentz 規範}：
+\[
+\nabla\cdot\vA + \mu\epsilon\frac{\partial V}{\partial t} = 0
+\]
+
+在此規範下，$\vA$ 與 $V$ 各自滿足\textbf{波動方程式}：
+\[
+\nabla^2\vA - \mu\epsilon\frac{\partial^2\vA}{\partial t^2} = -\mu\vJ, \qquad
+\nabla^2 V - \mu\epsilon\frac{\partial^2 V}{\partial t^2} = -\frac{\rho_v}{\epsilon}
+\]
+
+波的傳播速度：$u_p = 1/\sqrt{\mu\epsilon}$，在空氣中 $c = 1/\sqrt{\mu_0\epsilon_0}$。
+
+\textbf{遲滯位勢}（Retarded Potentials）——距離 $R$ 處的位勢取決於\textbf{較早時刻} $(t-R/u_p)$ 的源：
+\[
+V(R,t) = \frac{1}{4\pi\epsilon}\int_{V'}\frac{\rho_v(t-R/u_p)}{R}\,dv', \qquad
+\vA(R,t) = \frac{\mu}{4\pi}\int_{V'}\frac{\vJ(t-R/u_p)}{R}\,dv'
+\]
+
+%----------------------------------------------------------
+\section{時諧場與相量（6-5）}
+%----------------------------------------------------------
+
+\subsection{相量基礎}
+
+\begin{keybox}[瞬時值 $\leftrightarrow$ 相量轉換（cosine reference）]
+\[
+i(t) = I_0\cos(\omega t+\phi) \;\longleftrightarrow\; I_s = I_0 e^{j\phi}
+\]
+\textbf{規則}：
+\begin{itemize}[nosep]
+  \item $\dfrac{d}{dt} \to j\omega$，$\displaystyle\int dt \to \dfrac{1}{j\omega}$
+  \item 瞬時值 $= \Rea[I_s\,e^{j\omega t}]$
+\end{itemize}
+\end{keybox}
+
+\begin{warnbox}[常見錯誤]
+\begin{itemize}[nosep]
+  \item 相量\textbf{不是} $t$ 的函數——不要寫 $e^{j\omega t}$ 在相量裡。
+  \item 瞬時表達式\textbf{不含} $j$——含 $j$ 的一定是相量。
+  \item $\sin\omega t = \cos(\omega t - \pi/2)$，轉相量要先化為 $\cos$。
+\end{itemize}
+\end{warnbox}
+
+\subsection{相量形式 Maxwell 方程式}
+
+\begin{keybox}[Time-Harmonic Maxwell's Equations（相量）]
+\[
+\begin{aligned}
+\nabla\times\vE &= -j\omega\mu\vH \\
+\nabla\times\vH &= \vJ + j\omega\epsilon\vE \\
+\nabla\cdot\vE &= \rho_v/\epsilon \\
+\nabla\cdot\vH &= 0
+\end{aligned}
+\]
+\end{keybox}
+
+\subsection{Helmholtz 方程式}
+
+無源非導體介質中，$\vE$ 與 $\vH$ 滿足\textbf{齊次 Helmholtz 方程式}：
+\[
+\nabla^2\vE + k^2\vE = 0, \qquad \nabla^2\vH + k^2\vH = 0
+\]
+其中\textbf{波數}：
+\[
+k = \omega\sqrt{\mu\epsilon} = \frac{\omega}{u_p} = \frac{2\pi}{\lambda}
+\]
+
+
+%==========================================================
+\newpage
+\part{Chapter 7：平面電磁波}
+%==========================================================
+
+\section{無損介質中的平面波（7-2）}
+
+\subsection{基本解}
+
+$\vE = \ax E_x$ 的均勻平面波沿 $+z$ 傳播：
+\[
+E_x(z) = E_0^+ e^{-jkz} + E_0^- e^{+jkz}
+\]
+瞬時表達式（只取正向波）：
+\[
+\vE(z,t) = \ax E_0^+\cos(\omega t - kz)
+\]
+\textbf{等相位面}以\textbf{相速度} $u_p$ 傳播：
+
+\begin{keybox}[相速度與波數]
+\[
+u_p = \frac{\omega}{k} = \frac{1}{\sqrt{\mu\epsilon}}, \qquad
+k = \omega\sqrt{\mu\epsilon} = \frac{2\pi}{\lambda}
+\]
+\end{keybox}
+
+\subsection{$\vE$ 與 $\vH$ 的關係——本質阻抗}
+
+由 $\nabla\times\vE = -j\omega\mu\vH$ 得：
+\[
+\vH = \ay H_y^+(z) = \ay\frac{1}{\eta}E_x^+(z)
+\]
+
+\begin{keybox}[本質阻抗（Intrinsic Impedance）]
+\[
+\eta = \sqrt{\frac{\mu}{\epsilon}} \quad(\Omega)
+\]
+空氣中 $\eta_0 = \sqrt{\mu_0/\epsilon_0} = 120\pi \approx 377\;\Omega$。
+
+\textbf{重要性質}：
+\begin{itemize}[nosep]
+  \item $\vE$ 與 $\vH$ \textbf{同相}（無損介質）
+  \item $|\vE|/|\vH| = \eta$
+  \item $\vE$、$\vH$、傳播方向三者\textbf{互相垂直}（TEM 波）
+\end{itemize}
+\end{keybox}
+
+\begin{tipbox}[由 $\vE$ 快速求 $\vH$]
+\[
+\vH = \frac{1}{\eta}\,\ak\times\vE
+\]
+其中 $\ak$ 為\textbf{傳播方向}單位向量。反向波 $E_x^-/H_y^- = -\eta$。
+\end{tipbox}
+
+\subsection{都卜勒效應（7-2.1）}
+
+發射器以速度 $u$、與觀測線夾角 $\theta$ 朝接收器運動：
+\[
+f' \approx f\left(1 + \frac{u}{c}\cos\theta\right) \quad (u \ll c)
+\]
+靠近 → 頻率升高，遠離 → 頻率降低。
+
+\subsection{橫向電磁波（TEM）一般形式}
+
+任意方向傳播的均勻平面波：
+\[
+\vE = \ay E_0 e^{-j\vk\cdot\mathbf{R}}, \qquad \vk = \ak k
+\]
+
+\begin{keybox}[一般 TEM 關係]
+\[
+\vH = \frac{k}{\omega\mu}\,\ak\times\vE = \frac{1}{\eta}\,\ak\times\vE
+\]
+$\vE \perp \vH \perp \ak$，三者構成右手系。
+\end{keybox}
+
+%----------------------------------------------------------
+\subsection{極化（Polarization）（7-2.3）}
+
+\begin{notebox}[極化的定義]
+波的\textbf{極化}描述電場向量尖端隨時間的軌跡（在固定空間點觀察）。
+\end{notebox}
+
+考慮兩個正交分量的疊加，沿 $+z$ 傳播：
+\[
+\vE(z) = \ax E_{10} e^{-jkz} + \ay E_{20} e^{j\delta} e^{-jkz}
+\]
+
+\begin{keybox}[極化判定速查表]
+\renewcommand{\arraystretch}{1.6}
+\begin{center}
+\begin{tabular}{>{\bfseries}l l}
+\toprule
+類型 & 條件 \\
+\midrule
+線極化 & $\delta = 0$ 或 $\delta = \pm\pi$（同相或反相） \\
+圓極化 & $|E_{10}|=|E_{20}|$ 且 $\delta = \pm\pi/2$ \\
+橢圓極化 & 其他所有情況 \\
+\midrule
+右旋 (RHCP) & $E_y$ 分量\textbf{落後} $E_x$ 分量 $\pi/2$（$\delta=-\pi/2$） \\
+左旋 (LHCP) & $E_y$ 分量\textbf{領先} $E_x$ 分量 $\pi/2$（$\delta=+\pi/2$） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{keybox}
+
+\begin{tipbox}[極化判定步驟]
+\begin{enumerate}[nosep]
+  \item 確認傳播方向
+  \item 分解 $\vE$ 為兩正交分量，化為 cosine reference
+  \item 比較振幅和相位差 $\delta$
+  \item 在固定 $z$（如 $z=0$）寫出 $\vE(0,t)$，隨 $\omega t$ 增加看旋轉方向
+  \item 右手拇指指向傳播方向，四指跟隨旋轉 → RHCP；左手 → LHCP
+\end{enumerate}
+\end{tipbox}
+
+\begin{warnbox}[極化旋向的物理判定法]
+\textbf{面對波來的方向}（面對 $-\ak$ 方向）觀察：\\
+$\bullet$ 逆時針旋轉 → \textbf{RHCP}（右旋）\\
+$\bullet$ 順時針旋轉 → \textbf{LHCP}（左旋）\\[4pt]
+或等價地：右手拇指指向 $+\ak$（傳播方向），四指彎曲方向與 $\vE$ 旋轉方向一致 → RHCP。
+\end{warnbox}
+
+%----------------------------------------------------------
+\section{有損介質中的平面波（7-3）}
+%----------------------------------------------------------
+
+\subsection{複數介電常數與傳播常數}
+
+導電介質中 $\vJ = \sigma\vE$，Maxwell 方程式變為：
+\[
+\nabla\times\vH = j\omega\epsilon_c\,\vE, \qquad
+\epsilon_c = \epsilon - j\frac{\sigma}{\omega} = \epsilon' - j\epsilon''
+\]
+
+\begin{keybox}[損耗正切（Loss Tangent）]
+\[
+\tan\delta_c = \frac{\epsilon''}{\epsilon'} \approx \frac{\sigma}{\omega\epsilon}
+\]
+\begin{itemize}[nosep]
+  \item $\sigma/\omega\epsilon \gg 1$：\textbf{良導體}（Good Conductor）
+  \item $\sigma/\omega\epsilon \ll 1$：\textbf{低損耗介電質}（Low-Loss Dielectric）
+\end{itemize}
+\end{keybox}
+
+\textbf{傳播常數}：
+\[
+\gamma = \alpha + j\beta = j\omega\sqrt{\mu\epsilon_c} = j\omega\sqrt{\mu\epsilon}\left(1-j\frac{\sigma}{\omega\epsilon}\right)^{1/2}
+\]
+波的形式：$E_x = E_0\,e^{-\alpha z}\,e^{-j\beta z}$
+
+$\alpha$ = 衰減常數 (Np/m)，$\beta$ = 相位常數 (rad/m)。
+
+\subsection{低損耗介電質（$\sigma/\omega\epsilon \ll 1$）}
+
+\begin{keybox}[低損耗介電質公式]
+\[
+\alpha \approx \frac{\sigma}{2}\sqrt{\frac{\mu}{\epsilon}} \quad\text{(Np/m)}, \qquad
+\beta \approx \omega\sqrt{\mu\epsilon}\left[1+\frac{1}{8}\left(\frac{\sigma}{\omega\epsilon}\right)^2\right] \quad\text{(rad/m)}
+\]
+\[
+\eta_c \approx \sqrt{\frac{\mu}{\epsilon}}\left(1+j\frac{\sigma}{2\omega\epsilon}\right) \quad(\Omega), \qquad
+u_p \approx \frac{1}{\sqrt{\mu\epsilon}}\left[1-\frac{1}{8}\left(\frac{\sigma}{\omega\epsilon}\right)^2\right]
+\]
+\end{keybox}
+
+\subsection{良導體（$\sigma/\omega\epsilon \gg 1$）}
+
+\begin{keybox}[良導體公式]
+\[
+\alpha = \beta = \sqrt{\pi f\mu\sigma} \quad\text{(Np/m $=$ rad/m)}
+\]
+\[
+\eta_c = (1+j)\sqrt{\frac{\pi f\mu}{\sigma}} = (1+j)\frac{\alpha}{\sigma} \quad(\Omega) \quad\text{（相角 $45°$）}
+\]
+\[
+u_p = \sqrt{\frac{2\omega}{\mu\sigma}}, \qquad
+\lambda = \frac{2\pi}{\beta} = 2\sqrt{\frac{\pi}{f\mu\sigma}}
+\]
+\end{keybox}
+
+\subsection{集膚深度（Skin Depth）}
+
+\begin{keybox}[集膚深度]
+\[
+\boxed{\delta = \frac{1}{\alpha} = \frac{1}{\sqrt{\pi f\mu\sigma}}} \quad\text{(m)}
+\]
+波幅衰減至 $e^{-1} \approx 36.8\%$ 的距離。
+
+等價表示：$\delta = 1/\beta = \lambda/(2\pi)$。
+\end{keybox}
+
+\begin{tipbox}[集膚深度的物理意義]
+\begin{itemize}[nosep]
+  \item 高頻電流集中在導體\textbf{表面薄層}（skin）
+  \item $\delta$ 與 $\sqrt{f}$ 和 $\sqrt{\sigma}$ 成\textbf{反比}
+  \item 銅在 $10\;\text{GHz}$ 時 $\delta < 1\;\mu\text{m}$
+\end{itemize}
+\end{tipbox}
+
+%----------------------------------------------------------
+\section{群速度（7-4）}
+%----------------------------------------------------------
+
+\begin{keybox}[相速度 vs 群速度]
+\[
+u_p = \frac{\omega}{\beta} \quad\text{（相速度——等相位面的速度）}
+\]
+\[
+u_g = \frac{1}{d\beta/d\omega} = \frac{d\omega}{d\beta} \quad\text{（群速度——波包封套的速度）}
+\]
+\end{keybox}
+
+\begin{notebox}[色散（Dispersion）]
+\begin{itemize}[nosep]
+  \item $\beta$ 正比於 $\omega$（$u_p$ 與頻率無關）→ \textbf{非色散}，$u_g = u_p$
+  \item $u_g < u_p$：正常色散；$u_g > u_p$：異常色散
+  \item 有損介電質是色散介質
+  \item 資訊以 $u_g$ 傳播
+\end{itemize}
+\end{notebox}
+
+%----------------------------------------------------------
+\section{電磁功率流與坡印廷向量（7-5）}
+%----------------------------------------------------------
+
+\subsection{Poynting 定理推導}
+
+由 Maxwell curl 方程式出發：
+\[
+\nabla\cdot(\vE\times\vH) = -\frac{\partial}{\partial t}\!\left(\frac{1}{2}\epsilon E^2 + \frac{1}{2}\mu H^2\right) - \sigma E^2
+\]
+
+積分形式（Poynting 定理）：
+\[
+-\oint_S (\vE\times\vH)\cdot d\mathbf{s} = \frac{\partial}{\partial t}\int_V (w_e+w_m)\,dv + \int_V p_\sigma\,dv
+\]
+
+\begin{keybox}[坡印廷向量（Poynting Vector）]
+\[
+\boxed{\boldsymbol{\mathcal{P}} = \vE\times\vH} \quad\text{(W/m$^2$)}
+\]
+代表\textbf{電磁功率密度}——單位面積的功率流。
+\end{keybox}
+
+\begin{notebox}[能量密度]
+\[
+w_e = \frac{1}{2}\epsilon E^2 \;\text{（電場能量密度）}, \qquad
+w_m = \frac{1}{2}\mu H^2 \;\text{（磁場能量密度）}
+\]
+\[
+p_\sigma = \sigma E^2 = \vJ\cdot\vE \;\text{（歐姆功率密度）}
+\]
+\end{notebox}
+
+\subsection{時間平均功率密度}
+
+\begin{keybox}[有損介質中的平均 Poynting 向量]
+均勻平面波沿 $+z$ 方向傳播：
+\[
+\boldsymbol{\mathcal{P}}_{\text{av}}(z) = \az\frac{E_0^2}{2|\eta_c|}\,e^{-2\alpha z}\cos\theta_\eta \quad\text{(W/m$^2$)}
+\]
+其中 $\theta_\eta$ 是本質阻抗 $\eta_c = |\eta_c|e^{j\theta_\eta}$ 的相角。
+\end{keybox}
+
+\begin{keybox}[無損介質（$\alpha=0$, $\theta_\eta=0$）]
+\[
+\boldsymbol{\mathcal{P}}_{\text{av}} = \az\frac{E_0^2}{2\eta} \quad\text{(W/m$^2$)}
+\]
+\end{keybox}
+
+\begin{keybox}[一般公式（用相量）]
+\[
+\boxed{\boldsymbol{\mathcal{P}}_{\text{av}} = \frac{1}{2}\Rea(\vE\times\vH^*)} \quad\text{(W/m$^2$)}
+\]
+\end{keybox}
+
+\subsection{電流元的輻射功率}
+
+短電流元 $I\,d\ell$ 在遠場區的場：
+\[
+\vE = \ath\left(j\frac{60\pi I\,d\ell}{\lambda R}\sin\theta\right)e^{-j\beta R}, \qquad
+\vH = \aph\left(j\frac{I\,d\ell}{2\lambda R}\sin\theta\right)e^{-j\beta R}
+\]
+
+總輻射功率：
+\[
+P_{\text{rad}} = 40\pi^2\left(\frac{d\ell}{\lambda}\right)^2 I^2 \quad\text{(W)}
+\]
+
+%==========================================================
+\newpage
+\part{公式速查表}
+%==========================================================
+
+\begin{keybox}[Chapter 6 核心公式]
+\renewcommand{\arraystretch}{2.0}
+\begin{tabular}{>{\bfseries}p{4cm} l}
+\toprule
+名稱 & 公式 \\
+\midrule
+Faraday 定律（微分） & $\nabla\times\vE = -\dfrac{\partial\vB}{\partial t}$ \\
+Faraday 定律（積分） & $\emf = -\dfrac{d\Phi}{dt}$ \\
+變壓器 EMF & $\emf' = -\displaystyle\int_S\dfrac{\partial\vB}{\partial t}\cdot d\mathbf{s}$ \\
+動生 EMF & $\emf'' = \displaystyle\oint_C (\vu\times\vB)\cdot d\boldsymbol{\ell}$ \\
+理想變壓器 & $v_1/v_2 = N_1/N_2$ \\
+位移電流密度 & $\vJ_d = \partial\vD/\partial t$ \\
+Lorentz 規範 & $\nabla\cdot\vA + \mu\epsilon\,\partial V/\partial t = 0$ \\
+波速 & $u_p = 1/\sqrt{\mu\epsilon}$ \\
+波數 & $k = \omega\sqrt{\mu\epsilon} = 2\pi/\lambda$ \\
+\bottomrule
+\end{tabular}
+\end{keybox}
+
+\begin{keybox}[Chapter 7 核心公式]
+\renewcommand{\arraystretch}{2.0}
+\begin{tabular}{>{\bfseries}p{4cm} l}
+\toprule
+名稱 & 公式 \\
+\midrule
+本質阻抗 & $\eta = \sqrt{\mu/\epsilon}$，空氣 $\eta_0 = 120\pi\;\Omega$ \\
+$\vH$ 由 $\vE$ 求 & $\vH = \dfrac{1}{\eta}\,\ak\times\vE$ \\
+傳播常數 & $\gamma = \alpha + j\beta = j\omega\sqrt{\mu\epsilon_c}$ \\
+複數介電常數 & $\epsilon_c = \epsilon - j\sigma/\omega$ \\
+損耗正切 & $\tan\delta_c = \sigma/(\omega\epsilon)$ \\
+集膚深度 & $\delta = 1/\sqrt{\pi f\mu\sigma}$ \\
+良導體 $\alpha,\beta$ & $\alpha = \beta = \sqrt{\pi f\mu\sigma}$ \\
+良導體 $\eta_c$ & $(1+j)\sqrt{\pi f\mu/\sigma}$ \\
+相速度 & $u_p = \omega/\beta$ \\
+群速度 & $u_g = d\omega/d\beta$ \\
+Poynting 向量 & $\boldsymbol{\mathcal{P}} = \vE\times\vH$ \\
+平均功率密度 & $\boldsymbol{\mathcal{P}}_{\text{av}} = \frac{1}{2}\Rea(\vE\times\vH^*)$ \\
+無損 $\boldsymbol{\mathcal{P}}_{\text{av}}$ & $E_0^2/(2\eta)$ \\
+電流元輻射功率 & $P = 40\pi^2(d\ell/\lambda)^2 I^2$ \\
+\bottomrule
+\end{tabular}
+\end{keybox}
+
+\begin{keybox}[邊界條件速查]
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+& \textbf{兩無損介質} & \textbf{介質/PEC} \\
+\midrule
+$E_t$ & 連續 & $= 0$ \\
+$H_t$ & 連續 & $= J_s$ \\
+$D_n$ & 連續 & $= \rho_s$ \\
+$B_n$ & 連續 & $= 0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{keybox}
+
+\begin{keybox}[相量轉換速查]
+\renewcommand{\arraystretch}{1.8}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{瞬時表達式} & \textbf{相量（cosine reference）} \\
+\midrule
+$A\cos(\omega t + \phi)$ & $A\,e^{j\phi}$ \\
+$A\sin(\omega t + \phi)$ & $A\,e^{j(\phi-\pi/2)}$ \\
+$-A\cos(\omega t + \phi)$ & $A\,e^{j(\phi+\pi)}$ \\
+$\partial/\partial t$ & $\times\;j\omega$ \\
+$\int dt$ & $\times\;1/(j\omega)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{keybox}
+
+\vfill
+\begin{center}
+\textit{——整理完畢——}
+\end{center}
+
+\end{document}
