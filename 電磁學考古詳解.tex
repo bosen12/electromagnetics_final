@@ -66,6 +66,13 @@
   title={#1},
   breakable
 }
+\newtcolorbox{questionbox}[1][]{
+  colback=gray!8!white,
+  colframe=gray!70!black,
+  fonttitle=\bfseries,
+  title={#1},
+  breakable
+}
 
 % ===== 頁眉頁腳 =====
 \pagestyle{fancy}
@@ -93,6 +100,12 @@
 %-----------------------------------------------------------------------------
 \section{第 1 題（10 分）— 變壓器磁芯、導體與絕緣體、集膚深度}
 %-----------------------------------------------------------------------------
+
+\begin{questionbox}[Original Problem (10 points)]
+(a) Why are materials having high permeability and low conductivity preferred as transformer cores?\\
+(b) What distinguishes a good conductor from a good insulator at a given frequency?\\
+(c) What is meant by the skin depth of a conductor?
+\end{questionbox}
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
@@ -149,6 +162,13 @@
 %-----------------------------------------------------------------------------
 \section{第 2 題（14 分）— 矩形迴路的感應電動勢}
 %-----------------------------------------------------------------------------
+
+\begin{questionbox}[Original Problem (14 points)]
+A rigid rectangular loop of area $A$ is situated in the $xz$-plane and symmetrically about the $z$-axis, as shown, in a region of magnetic field $\vB = B_0(\ax \sin\omega t + \ay \cos\omega t)$ Wb/m$^2$. Find the \underline{induced emf} around the closed path $C$ of the loop for each of the following cases:\\
+(a) The loop is stationary.\\
+(b) The loop revolves around the $z$-axis in the sense of increasing $\phi$ with uniform angular velocity of $\omega$ rad/s; and\\
+(c) The loop revolves around the $z$-axis in the sense of decreasing $\phi$ with uniform angular velocity of $\omega$ rad/s.
+\end{questionbox}
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
@@ -233,6 +253,17 @@ $\phi = -\omega t$（$\phi$ 隨時間減小），代入：
 \section{第 3 題（10 分）— 磁性介質邊界條件求 $\mu_1$}
 %-----------------------------------------------------------------------------
 
+\begin{questionbox}[Original Problem (10 points)]
+Medium 1, consisting of the region $R < a$ in spherical coordinates, is a magnetic material of permeability $\mu_1$, whereas medium 2, consisting of the region $R > a$ in spherical coordinates, is free space. The magnetic flux densities in the two media are given by
+\[
+  \vB_1 = B_{01}(\aR \cos\theta - \ath \sin\theta)
+\]
+\[
+  \vB_2 = B_{02}\left[\aR\left(1 + 1.94\frac{a^3}{R^3}\right)\cos\theta - \ath\left(1 - 0.97\frac{a^3}{R^3}\right)\sin\theta\right]
+\]
+respectively. Find $\mu_1$.
+\end{questionbox}
+
 \begin{conceptbox}[核心概念]
 \begin{itemize}
   \item \textbf{磁場邊界條件}：在兩種介質交界面上
@@ -310,6 +341,18 @@ $\phi = -\omega t$（$\phi$ 隨時間減小），代入：
 %-----------------------------------------------------------------------------
 \section{第 4 題（27 分）— 均勻平面波}
 %-----------------------------------------------------------------------------
+
+\begin{questionbox}[Original Problem (27 points)]
+(a) What are \underline{the phasor and instantaneous expressions} of the $y$-directed (linearly polarized) electric field $\vE$ of a uniform plane wave \underline{in air} having an amplitude $E_0$, frequency $f$, and traveling in the $-x$ direction.\\
+(b) Determine \underline{the phasor and instantaneous expressions} of the associated magnetic field $\vH$.\\[6pt]
+If a uniform plane wave propagating in a lossless medium is $\vE = \ax E_0\cos(\omega t - 3y + 4z)$, then\\
+(c) what is the wave propagating direction, and\\
+(d) what is the wavelength of the wave in the medium?\\
+(e) What is the dielectric constant of the medium?\\
+(f) Determine the intrinsic impedance of the medium.\\
+(g) Find the corresponding \underline{instantaneous expressions} of H-field.\\
+Hint: Use $C$ as light speed in air or free space.
+\end{questionbox}
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
@@ -429,6 +472,12 @@ $\phi = -\omega t$（$\phi$ 隨時間減小），代入：
 \section{第 5 題（10 分）— 極化判斷}
 %-----------------------------------------------------------------------------
 
+\begin{questionbox}[Original Problem (10 points)]
+For each of the following fields, determine if the polarization is right- or left-circular or elliptical.\\
+(a) $\ay E_0\cos(\omega t + kx) + \az E_0\sin(\omega t + kx)$\\
+(b) $\ax E_0\cos(\omega t + ky) - \az\,2E_0\sin(\omega t + ky)$
+\end{questionbox}
+
 \begin{conceptbox}[核心概念]
 \begin{itemize}
   \item \textbf{線性極化}：$\vE$ 兩分量同相或反相
@@ -513,6 +562,19 @@ $+y$ → $+z$ 的旋轉方向為\textbf{逆時針}。
 %-----------------------------------------------------------------------------
 \section{第 6 題（24 分）— 介電質中平面波}
 %-----------------------------------------------------------------------------
+
+\begin{questionbox}[Original Problem (24 points)]
+The E-field of a uniform plane wave propagation in a dielectric medium is given by
+\[
+  \vE(z,t) = \ax\,5\cos\!\left(5\times10^7 t - \frac{z}{\sqrt{5}}\right) + \ay\sin\!\left(5\times10^7 t - \frac{z}{\sqrt{5}}\right) \;\text{(V/m)}.
+\]
+(a) Find the phasor of $\vE$.\\
+(b) Determine the frequency of the wave.\\
+(c) Determine the wavelength of the wave propagating in this dielectric medium.\\
+(d) What is the dielectric constant of the medium?\\
+(e) Determine the intrinsic impedance of the medium.\\
+(f) Find the corresponding instantaneous expression of H-field.
+\end{questionbox}
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
@@ -606,6 +668,15 @@ $+y$ → $+z$ 的旋轉方向為\textbf{逆時針}。
 %-----------------------------------------------------------------------------
 \section{第 7 題（30 分）— 有損介質中波的傳播}
 %-----------------------------------------------------------------------------
+
+\begin{questionbox}[Original Problem (30 points)]
+A 3 (GHz), $y$-polarized uniform plane wave propagates in the $+z$-direction in a nonmagnetic medium having a dielectric constant 2.5 and a loss tangent $10^{-2}$.\\
+(a) The medium is said to be a good conductor or a lossy dielectric at this frequency. \underline{Explain}.\\
+(b) Determine the attenuation constant, phase constant, and skin depth.\\
+(c) Determine the distance over which the amplitude of the propagating wave will be cut in half.\\
+(d) Determine the intrinsic impedance, the wavelength, the phase velocity, and the group velocity of the wave in the medium.\\
+(e) Assuming $\vE(0,t) = \ay\,50\sin(6\pi\times10^9 t + \pi/3)$ (V/m) at $z=0$, write the instantaneous expression for $\vH(z,t)$.
+\end{questionbox}
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
@@ -749,6 +820,17 @@ $\vH$ 的振幅為 $E_0/|\eta_c|$，且有相位延遲 $\theta_\eta$（$\eta_c$ 
 \section{第 8 題（15 分）— 天線輻射功率}
 %-----------------------------------------------------------------------------
 
+\begin{questionbox}[Original Problem (15 points)]
+The electric and magnetic field intensities in the radiation field of an antenna located at the origin are given in spherical coordinates by
+\begin{align*}
+  \vE &= \ath\,E_0\,\frac{\sin\theta}{R}\cos\omega\!\left(t - R\sqrt{\mu_0\varepsilon_0}\right) \;\text{(V/m)} \\
+  \vH &= \aph\,\frac{E_0}{\sqrt{\mu_0/\varepsilon_0}}\,\frac{\sin\theta}{R}\cos\omega\!\left(t - R\sqrt{\mu_0\varepsilon_0}\right) \;\text{(A/m)}
+\end{align*}
+(a) Find the instantaneous Poynting vector.\\
+(b) Find the \underline{instantaneous power} radiated by the antenna.\\
+(c) Find the \underline{time-average power} radiated by the antenna.
+\end{questionbox}
+
 \begin{conceptbox}[核心概念]
 \begin{itemize}
   \item \textbf{坡印廷向量}（Poynting vector）：$\vS = \vE \times \vH$，表示功率流密度
@@ -824,6 +906,12 @@ $\cos^2$ 的時間平均值為 $1/2$：
 \section{第 1 題（15 分）— 旋轉迴路中的感應電動勢}
 %-----------------------------------------------------------------------------
 
+\begin{questionbox}[Original Problem (15 points)]
+An $h$ by $w$ rectangular conducting loop is situated in a changing magnetic field $\vB = \ay B_0\cos\omega t$. The normal of the loop initially makes an angle $\alpha$ with $\ay$ as shown. Find the induced emf in the loop:\\
+(a) when the loop is at rest, and\\
+(b) when the loop rotates with an angular velocity $\omega$ about the $x$-axis.
+\end{questionbox}
+
 \begin{conceptbox}[核心概念]
 \begin{itemize}
   \item \textbf{法拉第定律}：$\emf = -d\Phi/dt$
@@ -883,6 +971,10 @@ $t=0$ 時夾角為 $\alpha$，旋轉後 $\alpha(t) = \alpha + \omega t$：
 %-----------------------------------------------------------------------------
 \section{第 2 題（15 分）— 完美導體邊界條件}
 %-----------------------------------------------------------------------------
+
+\begin{questionbox}[Original Problem (15 points)]
+Assume that the $y = 0$ plane separates air in the upper half-space ($y > 0$) from a perfect conductor and that a surface charge density $\rho_s = C_1\cos\beta z$ and a surface current density $\vJ_s = \az C_2\sin\beta z$ exist on the interface. ($C_1$, $C_2$, and $\beta$ are constants.) Determine \underline{$\vE$ and $\vH$} in the air at the interface.
+\end{questionbox}
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
@@ -951,6 +1043,10 @@ $t=0$ 時夾角為 $\alpha$，旋轉後 $\alpha(t) = \alpha + \omega t$：
 \section{第 3 題（10 分）— 相量法求波的合成}
 %-----------------------------------------------------------------------------
 
+\begin{questionbox}[Original Problem (10 points)]
+The electric field intensity of an electromagnetic wave $\vE(z,t) = \ax E_0\cos(\omega t - kz)$ (V/m) is the sum of $\vE_1(z,t) = \ax\,10^{-3}\sin(\omega t - kz)$ (V/m) and $\vE_2(z,t) = \ax\,3\times10^{-3}\cos(\omega t - kz + \phi)$ (V/m). Find $E_0$ and $\phi$. Hint: Use phasors.
+\end{questionbox}
+
 \begin{conceptbox}[核心概念]
 \begin{itemize}
   \item 兩同頻波疊加，用\textbf{相量加法}合成
@@ -1007,6 +1103,12 @@ $t=0$ 時夾角為 $\alpha$，旋轉後 $\alpha(t) = \alpha + \omega t$：
 %-----------------------------------------------------------------------------
 \section{第 4 題（20 分）— 均勻平面波}
 %-----------------------------------------------------------------------------
+
+\begin{questionbox}[Original Problem (20 points)]
+(a) What are \underline{the phasor and instantaneous expressions} of the $x$-directed (linearly polarized) electric field $\vE$ of a uniform plane wave \underline{in air} having an amplitude $E_0$, frequency $f$, and traveling in the $-z$ direction.\\
+(b) Determine \underline{the phasor and instantaneous expressions} of the associated magnetic field $\vH$.\\
+(c) If this uniform plane wave propagates in the $xz$-plane in a medium, $\vk = \ax\,4 - \az\,3$ $\mu$m$^{-1}$, what are the \underline{instantaneous expression} of $\vE$ and the \underline{wavelength} of the wave.
+\end{questionbox}
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
@@ -1068,6 +1170,19 @@ $\vE$ 必須垂直於 $\vk$。在 $xz$ 平面內傳播，最自然的極化方�
 \section{第 5 題（25 分）— 介電質中平面波（含極化分析）}
 %-----------------------------------------------------------------------------
 
+\begin{questionbox}[Original Problem (25 points)]
+The E-field of a uniform plane wave propagating in a lossless dielectric medium is given by
+\[
+  \vE(z,t) = \ax\,5\cos\!\left(5\times10^7 t - \frac{z}{\sqrt{5}}\right) + \ay\sin\!\left(5\times10^7 t - \frac{z}{\sqrt{5}}\right) \;\text{(V/m)}.
+\]
+(a) Find the phasor of $\vE$.\\
+(b) Describe the \underline{polarization} of the wave and \underline{draw a polarization diagram} to verify your answer.\\
+(c) Determine the \underline{frequency and wavelength} of the wave.\\
+(d) What is the dielectric constant $\varepsilon_r$ of the medium?\\
+(e) Determine the intrinsic impedance of the medium.\\
+(f) Find the corresponding instantaneous expression of H-field.
+\end{questionbox}
+
 此題與 2024 年第 6 題完全相同。$\vE(z,t) = \ax\,5\cos\Psi + \ay\sin\Psi$，$\Psi = 5\times10^7 t - z/\sqrt{5}$。
 
 數值結果：$f\approx 7.96$ MHz，$\lambda\approx 14.05$ m，$\varepsilon_r\approx 7.2$，$\eta\approx 140.5\;\Omega$。
@@ -1100,6 +1215,19 @@ $\vE$ 有兩個正交分量：$E_x = 5\cos\Psi$（振幅 5），$E_y = \sin\Psi$
 %-----------------------------------------------------------------------------
 \section{第 6 題（30 分）— 海水中的波傳播（良導體）}
 %-----------------------------------------------------------------------------
+
+\begin{questionbox}[Original Problem (30 points)]
+A uniform plane wave propagates in the $+z$-(downward) direction into the ocean ($\varepsilon_r = 80$, $\mu_r = 1$, $\sigma = 4$ S/m). If the magnetic field at the ocean surface ($z = 0$) is
+\[
+  \vH(0,t) = \ay\,100\cos(2\pi\times10^3 t + 15°) \;\text{mA/m}.
+\]
+(a) The medium is said to be a good conductor or a lossy dielectric at this frequency. \underline{Explain}.\\
+(b) Apply $\gamma = jk_c = \alpha + j\beta$, and $\nabla\times\vH = j\omega\varepsilon_c\vE$ with the condition of above problem (a) to \underline{derive the formulas of $\alpha$ and $\beta$}.\\
+(c) Determine the \underline{attenuation constant}, \underline{phase constant}, and \underline{skin depth}.\\
+(d) Determine the \underline{phase velocity} of the wave and the \underline{intrinsic impedance} of the medium.\\
+(e) Write the expressions for $\vE(z,t)$ and $\vH(z,t)$.\\
+(f) Find the \underline{average power loss per unit area} in the ocean as a function of $z$.
+\end{questionbox}
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
@@ -1203,6 +1331,18 @@ $\vE$ 方向：由 $\vH = \frac{1}{\eta_c}\hat{\vk}\times\vE$ 得 $\vE = -\eta_c
 %-----------------------------------------------------------------------------
 \section{第 7 題（15 分）— 短電流元天線輻射}
 %-----------------------------------------------------------------------------
+
+\begin{questionbox}[Original Problem (15 points)]
+The phasor expressions of the far field at a distance $R$ from a short vertical current element $Id\ell$ located in free space at the origin of a spherical coordinate system are
+\begin{align*}
+  \vE(R,\theta) &= \ath\left(j\frac{30\pi\,Id\ell}{\lambda R}\cos\theta\right)e^{-j\beta R} \;\text{(V/m)} \\[4pt]
+  \vH(R,\theta) &= \aph\left(j\frac{Id\ell}{4\lambda R}\cos\theta\right)e^{-j\beta R} \;\text{(A/m)}
+\end{align*}
+where $\lambda$ is the wavelength.\\
+(a) Write the instantaneous expressions of $\vE$ and $\vH$.\\
+(b) Write the expression for instantaneous Poynting vector.\\
+(c) Find the \underline{time-average power} radiated by the current element.
+\end{questionbox}
 
 \begin{conceptbox}[核心概念]
 \begin{itemize}
