@@ -195,58 +195,55 @@ A rigid rectangular loop of area $A$ is situated in the $xz$-plane and symmetric
 
 \begin{solutionbox}[詳解]
 
-迴路在 $xz$ 平面，面積為 $A$，法向量 $\an$ 的初始方向取決於迴路的取向。
+迴路在 $xz$ 平面，面積為 $A$，初始法向量取 $\hat{\mathbf{a}}_{n0} = \ay$。
 
-當迴路在 $xz$ 平面時，面的法向量為 $\ay$（或 $-\ay$），取 $\an = \ay$。
+\textbf{關鍵：先確認 $\vB$ 的旋轉方向}
 
-若迴路繞 $z$ 軸旋轉角度 $\phi$，則法向量：
-\[
-  \an = \ax \sin\phi + \ay \cos\phi
-\]
+$\vB = B_0(\ax\sin\omega t + \ay\cos\omega t)$：$t=0$ 時指向 $+y$，之後逐漸偏向 $+x$，從 $+z$ 俯視為\textbf{順時針}（$-\phi$ 方向）旋轉，角速度 $\omega$。
 
-磁通量：
-\[
-  \Phi = \vB \cdot \an \cdot A = B_0 A (\sin\omega t \sin\phi + \cos\omega t \cos\phi) = B_0 A \cos(\omega t - \phi)
-\]
+迴路旋轉後，法向量由旋轉方向決定：
+\begin{itemize}
+  \item \textbf{逆時針}（$+\phi$ 方向）轉 $\omega t$：$\displaystyle\an = -\sin(\omega t)\,\ax + \cos(\omega t)\,\ay$
+  \item \textbf{順時針}（$-\phi$ 方向）轉 $\omega t$：$\displaystyle\an = +\sin(\omega t)\,\ax + \cos(\omega t)\,\ay$
+\end{itemize}
 
-\textbf{(a) 迴路靜止（$\phi$ 固定）：}
+\textbf{(a) 迴路靜止：}
 
-迴路在 $xz$ 平面不動，$\phi = 0$：
-\[
-  \an = \ay, \quad \Phi = B_0 A \cos\omega t
-\]
+$\an = \ay$，$\Phi = B_0 A\cos\omega t$
 \[
   \boxed{\emf = -\frac{d\Phi}{dt} = B_0 A \omega \sin\omega t \;\text{(V)}}
 \]
 
-\textbf{概念解釋}：迴路不動但磁場隨時間變化（$\vB$ 中有 $\sin\omega t$ 和 $\cos\omega t$），所以有 transformer emf。由於 $\an = \ay$，只有 $\ay$ 分量的磁場（$B_0\cos\omega t$）穿過迴路。
+\textbf{概念解釋}：磁場隨時間變化，transformer emf。$\an = \ay$ 故只有 $B_0\cos\omega t$ 分量穿過迴路。
 
 \bigskip
-\textbf{(b) 迴路繞 $z$ 軸旋轉，$\phi$ 遞增方向，角速度 $\omega$ rad/s：}
+\textbf{(b) 迴路繞 $z$ 軸旋轉，$\phi$ 遞增方向（逆時針），角速度 $\omega$ rad/s：}
 
-$\phi = \omega t$（$\phi$ 隨時間增加），代入：
+法向量：$\an = -\sin(\omega t)\,\ax + \cos(\omega t)\,\ay$
+
 \[
-  \Phi = B_0 A \cos(\omega t - \omega t) = B_0 A \cos(0) = B_0 A
+  \Phi = \vB\cdot\an\cdot A = B_0 A\bigl[-\sin^2(\omega t) + \cos^2(\omega t)\bigr] = B_0 A\cos(2\omega t)
+\]
+\[
+  \boxed{\emf = -\frac{d\Phi}{dt} = 2\omega B_0 A \sin(2\omega t) \;\text{(V)}}
+\]
+
+\textbf{概念解釋}：$\vB$ 以 $\omega$ 做\textbf{順時針}（$-\phi$）旋轉；迴路以 $\omega$ 做\textbf{逆時針}（$+\phi$）旋轉，兩者方向\textbf{相反}，相對角速度為 $2\omega$，故磁通以 $2\omega$ 頻率振盪，emf 頻率與振幅皆加倍。
+
+\bigskip
+\textbf{(c) 迴路繞 $z$ 軸旋轉，$\phi$ 遞減方向（順時針），角速度 $\omega$ rad/s：}
+
+法向量：$\an = +\sin(\omega t)\,\ax + \cos(\omega t)\,\ay$
+
+\[
+  \Phi = \vB\cdot\an\cdot A = B_0 A\bigl[\sin^2(\omega t) + \cos^2(\omega t)\bigr] = B_0 A
 \]
 磁通量為\textbf{常數}！因此：
 \[
   \boxed{\emf = -\frac{d\Phi}{dt} = 0 \;\text{(V)}}
 \]
 
-\textbf{概念解釋}：迴路的旋轉與磁場的旋轉\textbf{同步}！磁場向量 $\vB = B_0(\ax\sin\omega t + \ay\cos\omega t)$ 本身就以角速度 $\omega$ 繞 $z$ 軸旋轉。迴路也以 $\omega$ 旋轉，兩者始終保持相同相對角度，所以穿過迴路的磁通不變，emf 為零。
-
-\bigskip
-\textbf{(c) 迴路繞 $z$ 軸旋轉，$\phi$ 遞減方向，角速度 $\omega$ rad/s：}
-
-$\phi = -\omega t$（$\phi$ 隨時間減小），代入：
-\[
-  \Phi = B_0 A \cos(\omega t - (-\omega t)) = B_0 A \cos(2\omega t)
-\]
-\[
-  \boxed{\emf = -\frac{d\Phi}{dt} = 2\omega B_0 A \sin(2\omega t) \;\text{(V)}}
-\]
-
-\textbf{概念解釋}：迴路轉動方向與磁場旋轉方向\textbf{相反}，使得相對角速度加倍為 $2\omega$。因此磁通以 $2\omega$ 頻率振盪，感應 emf 頻率也加倍，振幅為 $2\omega B_0 A$。
+\textbf{概念解釋}：$\vB$ 以 $\omega$ 做順時針旋轉，迴路也以 $\omega$ 做順時針旋轉，兩者\textbf{同向同速}，相對角度恆定，穿過迴路的磁通不變，emf 為零。
 \end{solutionbox}
 
 %-----------------------------------------------------------------------------
@@ -552,10 +549,10 @@ $+y$ → $+z$ 的旋轉方向為\textbf{逆時針}。
 \end{itemize}
 
 面向 $-y$ 方向（傳播方向）觀察 $xz$ 平面：\\
-取 $z$ 朝上、$x$ 朝左的視角，$+x$（左）→ $-z$（下）的旋轉方向為\textbf{逆時針}。
+面向 $-y$ 時，$+z$ 朝上、$+x$ 朝左（因為面南時東在左手邊）。$+x$（左）→ $-z$（下）的旋轉方向為\textbf{順時針}。
 
 \[
-  \boxed{\text{左旋橢圓極化（LHEP, Left-Hand Elliptical Polarization）}}
+  \boxed{\text{右旋橢圓極化（RHEP, Right-Hand Elliptical Polarization）}}
 \]
 \end{solutionbox}
 
