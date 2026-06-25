@@ -1588,6 +1588,103 @@ $\langle\sin^2\rangle = 1/2$：
 \]
 \end{formulabox}
 
+\section{$\alpha$、$\beta$、$k$、$\gamma$ 完整辨析}
+
+\begin{conceptbox}[這四個量是什麼？]
+波在介質中傳播的一般形式：
+\[
+  \vE(z,t) = \ax\, E_0\, \underbrace{e^{-\alpha z}}_{\text{振幅衰減}} \cos(\omega t - \underbrace{\beta z}_{\text{相位變化}})
+\]
+對應相量：$\tilde{\vE}(z) = \ax\, E_0\, e^{-\gamma z}$，其中 $\gamma = \alpha + j\beta$。
+
+\medskip
+\begin{center}
+\begin{tabular}{clll}
+\toprule
+\textbf{符號} & \textbf{名稱} & \textbf{單位} & \textbf{物理意義} \\
+\midrule
+$\gamma$ & 傳播常數 & m$^{-1}$ & 描述波在介質中傳播的完整資訊（衰減+相位） \\
+$\alpha$ & 衰減常數 & Np/m & 波振幅每公尺衰減多少（$\text{Re}[\gamma]$） \\
+$\beta$ & 相位常數 & rad/m & 波每公尺累積多少相位（$\text{Im}[\gamma]$） \\
+$k$ & 波數 & rad/m & 無損介質中 $= \beta$；有損時通常直接用 $\beta$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{conceptbox}
+
+\begin{formulabox}[$k$ 和 $\beta$ 的關係]
+\textbf{無損介質}（$\sigma = 0$）：
+\[
+  \boxed{k = \beta = \omega\sqrt{\mu\varepsilon}}, \quad \alpha = 0, \quad \gamma = j\beta = jk
+\]
+$k$ 和 $\beta$ \textbf{完全相同}，可以互換。考試寫哪個都對。
+
+\medskip
+\textbf{有損介質}（$\sigma \neq 0$）：
+\[
+  \gamma = \alpha + j\beta = j\omega\sqrt{\mu\varepsilon_c}\,, \quad \varepsilon_c = \varepsilon - j\frac{\sigma}{\omega}
+\]
+若定義複數波數 $k_c$，則 $\gamma = jk_c$，所以 $k_c = \beta - j\alpha$。\\
+\textbf{考試中有損介質幾乎只用 $\alpha$ 和 $\beta$，不用 $k$。}
+\end{formulabox}
+
+\begin{formulabox}[各介質中的 $\alpha$、$\beta$ 公式速查]
+
+\textbf{1. 無損介質（lossless, $\sigma = 0$）}
+\[
+  \alpha = 0, \quad \beta = \omega\sqrt{\mu\varepsilon} = \frac{\omega}{c}\sqrt{\mu_r\varepsilon_r}
+\]
+
+\textbf{2. 低損耗介電質（lossy dielectric, $\sigma/\omega\varepsilon \ll 1$）}
+\[
+  \alpha \approx \frac{\sigma}{2}\sqrt{\frac{\mu}{\varepsilon}}, \quad
+  \beta \approx \omega\sqrt{\mu\varepsilon}\left[1 + \frac{1}{8}\left(\frac{\sigma}{\omega\varepsilon}\right)^2\right] \approx \omega\sqrt{\mu\varepsilon}
+\]
+\textit{$\beta$ 幾乎等於無損情況，$\alpha$ 很小但不為零。}
+
+\textbf{3. 良導體（good conductor, $\sigma/\omega\varepsilon \gg 1$）}
+\[
+  \boxed{\alpha = \beta = \sqrt{\pi f \mu \sigma}}, \quad \delta = \frac{1}{\alpha} = \frac{1}{\beta}
+\]
+\textit{$\alpha$ 和 $\beta$ \textbf{相等}！這是良導體最重要的特徵。}
+
+\medskip
+\textbf{4. 一般有損介質（精確公式，不常用）}
+\[
+  \alpha = \omega\sqrt{\frac{\mu\varepsilon}{2}}\left[\sqrt{1+\left(\frac{\sigma}{\omega\varepsilon}\right)^2} - 1\right]^{1/2}
+\]
+\[
+  \beta = \omega\sqrt{\frac{\mu\varepsilon}{2}}\left[\sqrt{1+\left(\frac{\sigma}{\omega\varepsilon}\right)^2} + 1\right]^{1/2}
+\]
+\end{formulabox}
+
+\begin{conceptbox}[考試常見陷阱]
+\begin{enumerate}
+  \item \textbf{「$k$ 和 $\beta$ 哪個對？」}——無損介質中完全一樣；有損時用 $\beta$。
+  \item \textbf{「良導體 $\alpha = \beta$」}——這不是近似，是精確結果（$\sigma \gg \omega\varepsilon$ 時）。
+  \item \textbf{「低損耗的 $\beta \approx \omega\sqrt{\mu\varepsilon}$」}——和無損幾乎一樣，差別在 $\alpha \neq 0$。
+  \item \textbf{由 $\alpha$、$\beta$ 反推介質}：若 $\alpha = \beta$ → 良導體；若 $\alpha \ll \beta$ → 低損耗。
+  \item \textbf{$\delta = 1/\alpha$}——集膚深度永遠是衰減常數的倒數，不論介質類型。
+\end{enumerate}
+\end{conceptbox}
+
+\begin{formulabox}[其他量與 $\alpha$、$\beta$ 的關係]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{物理量} & \textbf{與 $\alpha$、$\beta$ 的關係} \\
+\midrule
+波長 $\lambda$ & $\lambda = 2\pi/\beta$ \\
+相速 $u_p$ & $u_p = \omega/\beta$ \\
+群速 $u_g$ & $u_g = d\omega/d\beta$ \\
+集膚深度 $\delta$ & $\delta = 1/\alpha$ \\
+振幅衰減一半的距離 & $z_{1/2} = \ln 2 / \alpha \approx 0.693/\alpha$ \\
+良導體 $\eta_c$ & $\eta_c = (1+j)\,\alpha/\sigma$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
 \section{極化判定}
 
 \begin{formulabox}[極化公式]
